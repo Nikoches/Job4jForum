@@ -1,4 +1,4 @@
-package Main;
+package ru.job4j.forum;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
