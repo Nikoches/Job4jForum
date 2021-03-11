@@ -1,7 +1,9 @@
 package ru.job4j.forum.model;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 public class Post {
@@ -54,9 +56,8 @@ public class Post {
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
         return id == post.id &&
-                Objects.equals(name, post.name) &&
-                Objects.equals(desc, post.desc) &&
-                Objects.equals(created, post.created);
+                Objects.equals(name, post.name);
+
     }
 
     @Override

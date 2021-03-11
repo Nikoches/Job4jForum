@@ -18,6 +18,16 @@
     <div class="row">
         <h4>Форум job4j</h4>
     </div>
+    <br/>
+    <p>Login:
+        <c:if test="${sessionScope.username != null}">
+            Возраст более 24 лет
+        </c:if>
+        <c:if test="${param.age <= 24}">
+            Возраст не менее 24 лет
+        </c:if>
+
+        <%= session.getAttribute("username") %></p>
     <div class="row">
         <table class="table">
             <thead>
@@ -28,12 +38,26 @@
             <tbody>
             <c:forEach items="${posts}" var="post">
                 <tr>
-                    <td><c:out value="${post.name}"/></td>
+                    <td><c:out value="${post.name}"/></td> <td>  <a href='<c:url value="/topic?topic=${post.name}"/>'><c:url value="Перейти в топик" /></a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
+    <table class="table2">
+        <thead>
+        <tr>
+            <th scope="col">Users</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${users}" var="user">
+            <tr>
+                <td><c:out value="${user.username}"/> <td><c:out value="${user.surname}"/></td></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 <!-- Optional JavaScript -->
