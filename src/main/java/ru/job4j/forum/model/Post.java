@@ -11,11 +11,28 @@ public class Post {
     private String name;
     private String desc;
     private Calendar created;
+    private ArrayList<Message> messages = new ArrayList<>();
 
-    public static Post of(String name) {
+    public static Post of(int id, String name) {
         Post post = new Post();
         post.name = name;
         return post;
+    }
+
+    public static Post of(int id, String name, String desc) {
+        Post post = new Post();
+        post.name = name;
+        post.id = id;
+        post.desc = desc;
+        return post;
+    }
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
     }
 
     public int getId() {
