@@ -28,12 +28,10 @@ public class ConversationControl {
 
     @GetMapping("/edit")
     public String getEditPost(@RequestParam(required = false, value = "topic", defaultValue = "Empty topic") int topic, Model model) {
-        //TODO дописать Optional
-        Optional<Post> optionalPost = Optional.of(conversationService.getPostById(topic));
-       if(optionalPost.isEmpty()) {
-            model.addAttribute("alert","true");
-       }else {
-           model.addAttribute("post",conversationService.getPostById(topic));
+        Optional<Post> optionalPost = Optional.ofNullable(conversationService.getPostById(topic));
+       if(optionalPost.isPresent()) {
+           model.addAttribute("post",optionalPost.get());
+           model.addAttribute("alert","display: none");
        }
        return "edit";
     }
