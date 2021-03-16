@@ -8,17 +8,22 @@ public class Message {
     private User author;
     private String message;
     private Date date;
-    public Message(int id,String message, Date date) {
+
+    public Message(int id, String message, Date date) {
         this.id = id;
         this.message = message;
         this.date = date;
     }
+
     public Message(int id, Post post, User author, String message, Date date) {
         this.id = id;
         this.post = post;
         this.author = author;
         this.message = message;
         this.date = date;
+    }
+
+    public Message() {
     }
 
     public int getId() {
@@ -35,9 +40,6 @@ public class Message {
 
     public void setPost(Post post) {
         this.post = post;
-    }
-
-    public Message() {
     }
 
     public User getAuthor() {

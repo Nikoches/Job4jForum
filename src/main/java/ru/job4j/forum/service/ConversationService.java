@@ -29,7 +29,7 @@ public class ConversationService {
     }
 
     public Post getPostById(int id) {
-        return posts.getOrDefault(id,null);
+        return posts.getOrDefault(id, null);
     }
 
     private void testLaunch() {

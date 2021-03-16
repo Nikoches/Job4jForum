@@ -11,6 +11,7 @@ import ru.job4j.forum.service.UserService;
 public class IndexControl {
     private final UserService userService;
     private final ConversationService conversationService;
+
     public IndexControl(UserService userService, ConversationService conversationService) {
         this.userService = userService;
         this.conversationService = conversationService;

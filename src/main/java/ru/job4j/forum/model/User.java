@@ -2,7 +2,10 @@ package ru.job4j.forum.model;
 
 public class User {
 
-    public User( ) {
+    private String username;
+    private String surname;
+
+    public User() {
     }
 
     public User(String username, String surname) {
@@ -25,7 +28,4 @@ public class User {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
-    private String username;
-    private String surname;
 }

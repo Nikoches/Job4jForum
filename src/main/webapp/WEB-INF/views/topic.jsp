@@ -1,9 +1,10 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<jsp:include page="parts/general.jsp"/>
 <html>
 <head>
     <title>${topic}</title>
-    <jsp:include page="parts/general.jsp" />
     <a href='<c:url value="/index"/>'><c:url value="Вернутся на главную" /></a>
 </head>
 <body>

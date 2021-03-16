@@ -48,10 +48,10 @@ public class ConversationControl {
                                        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
                                        @RequestParam(value = "post_id") int id) {
         Post editedPost = conversationService.getPostById(id);
-        if(!post_name.isEmpty()){
+        if (!post_name.isEmpty()) {
             editedPost.setName(post_name);
         }
-        if(!post_desc.isEmpty()){
+        if (!post_desc.isEmpty()) {
             editedPost.setDesc(post_desc);
         }
         Optional.ofNullable(date).ifPresent(x -> {

@@ -9,6 +9,7 @@ import java.util.List;
 @Service
 public class UserService {
     private List<User> userList;
+
     public UserService() {
         userList = new LinkedList<>();
     }
@@ -20,10 +21,12 @@ public class UserService {
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
-    public void addUser(User user){
+
+    public void addUser(User user) {
         this.userList.add(user);
     }
-    public void removeUser(User user){
+
+    public void removeUser(User user) {
         this.userList.remove(user);
     }
 }

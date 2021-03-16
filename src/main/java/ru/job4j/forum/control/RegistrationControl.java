@@ -13,6 +13,7 @@ import ru.job4j.forum.service.UserService;
 @Controller
 public class RegistrationControl {
     private final UserService userService;
+
     public RegistrationControl(UserService userService) {
         this.userService = userService;
     }
