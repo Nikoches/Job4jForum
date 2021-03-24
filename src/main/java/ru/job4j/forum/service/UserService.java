@@ -1,7 +1,7 @@
 package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
-import ru.job4j.forum.model.User;
+import ru.job4j.forum.domain.User;
 
 import java.util.LinkedList;
 import java.util.List;

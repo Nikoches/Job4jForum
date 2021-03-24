@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
-import ru.job4j.forum.model.Post;
+import ru.job4j.forum.domain.Post;
 import ru.job4j.forum.service.ConversationService;
 
 import java.util.Calendar;
@@ -52,7 +52,7 @@ public class ConversationControl {
             editedPost.setName(post_name);
         }
         if (!post_desc.isEmpty()) {
-            editedPost.setDesc(post_desc);
+            editedPost.setDescription(post_desc);
         }
         Optional.ofNullable(date).ifPresent(x -> {
             Calendar calendar = Calendar.getInstance();

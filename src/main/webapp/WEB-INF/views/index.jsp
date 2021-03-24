@@ -1,6 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="parts/general.jsp"/>
 <!doctype html>
 <html lang="en">
@@ -38,7 +38,7 @@
                 <tr>
                     <td><c:out value="${post.name}"/></td>
                     <td>  <a href='<c:url value="/topic?topic=${post.id}"/>'><c:url value="Перейти в пост" /></a></td>
-                    <td><c:out value="${post.desc}"/></td>
+                    <td><c:out value="${post.description}"/></td>
                     <td><c:out value="${post.created}"/></td>
                     <td>  <a href='<c:url value="/edit?topic=${post.id}"/>'><c:url value="Редактировать пост" /></a></td>
                 </tr>
@@ -55,7 +55,7 @@
         <tbody>
         <c:forEach items="${users}" var="user">
             <tr>
-                <td><c:out value="${user.username}"/> <td><c:out value="${user.surname}"/></td></td>
+                <td><c:out value="${user.username}"/> <td><c:out value="${user.surname}"/></td>
             </tr>
         </c:forEach>
         </tbody>

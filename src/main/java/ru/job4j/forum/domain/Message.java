@@ -1,10 +1,17 @@
-package ru.job4j.forum.model;
+package ru.job4j.forum.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "messages")
 public class Message {
+    @Id
     private int id;
+    @ManyToOne
+    @JoinColumn(name="post")
     private Post post;
+    @Transient
     private User author;
     private String message;
     private Date date;
@@ -15,10 +22,9 @@ public class Message {
         this.date = date;
     }
 
-    public Message(int id, Post post, User author, String message, Date date) {
+    public Message(int id, Post post, String message, Date date) {
         this.id = id;
         this.post = post;
-        this.author = author;
         this.message = message;
         this.date = date;
     }

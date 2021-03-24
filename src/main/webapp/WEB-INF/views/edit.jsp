@@ -9,7 +9,8 @@
 </head>
 <body>
 <div class="alert alert-warning" id="alert" style="${alert};">
-    <strong>Warning!</strong> Пост не найден. <a href="/index" class="alert-link">Вернутся на главную</a>.
+    <strong>Warning!</strong> Пост не найден. <a href="${pageContext.request.contextPath}/index" class="alert-link">Вернуться
+    на главную</a>.
 </div>
 <div class="container">
     <div class="row justify-content-center mb-5 mt-5">
@@ -20,7 +21,8 @@
                 <label for="post_name">Название поста:</label>
                 <input type="text" name="post_name" class="form-control" placeholder="${post.name}" id="post_name"><br>
                 <label for="post_desc">Описание поста:</label>
-                <input type="text" name="post_desc" class="form-control" placeholder="${post.desc}" id="post_desc"><br>
+                <input type="text" name="post_desc" class="form-control" placeholder="${post.description}"
+                       id="post_desc"><br>
                 <label for="post_date">Дата поста:</label>
                 <input type="date" name="post_date" class="form-control" placeholder="${post.created}"
                        id="post_date"><br>

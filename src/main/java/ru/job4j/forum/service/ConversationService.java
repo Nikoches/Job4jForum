@@ -1,49 +1,56 @@
 package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
-import ru.job4j.forum.model.Message;
-import ru.job4j.forum.model.Post;
+import ru.job4j.forum.domain.Message;
+import ru.job4j.forum.domain.Post;
+import ru.job4j.forum.storage.MessageStorage;
+import ru.job4j.forum.storage.PostsStorage;
 
 
 import java.util.*;
 
 @Service
 public class ConversationService {
-    private final HashMap<Integer, Post> posts = new HashMap<>();
+    private final PostsStorage postsStorage;
+    private final MessageStorage messageStorage;
 
-    public ConversationService() {
+    public ConversationService(PostsStorage postsStorage, MessageStorage messageStorage) {
+        this.postsStorage = postsStorage;
+        this.messageStorage = messageStorage;
         testLaunch();
-
     }
 
-    public Collection<Post> getAllPosts() {
-        return posts.values();
+    public List<Post> getAllPosts() {
+        List<Post> rsl = new ArrayList<>();
+        postsStorage.findAll().forEach(rsl::add);
+        return rsl;
     }
 
     public void addMessage(Message msg, int postId) {
-        this.posts.get(postId).getMessages().add(msg);
+        this.postsStorage.findById(postId).ifPresent(x -> x.getMessages().add(msg));
     }
 
     public List<Message> getMessagesByPost(int postId) {
-        return posts.get(postId).getMessages();
+        return getPostById(postId).getMessages();
     }
 
     public Post getPostById(int id) {
-        return posts.getOrDefault(id, null);
-    }
-
-    private void testLaunch() {
-        this.posts.put(1, Post.of(1, "TestTopic", "TestDescription"));
-        this.posts.get(1).getMessages().add(new Message(1, "TestMessage", new Date()));
+        return postsStorage.findById(id).orElse(null);
     }
 
     public boolean editPostById(int id, String name, String desc) {
-        Post editedPost = null;
-        if (posts.get(id) == null) {
+        Post editedPost;
+        if (!postsStorage.existsById(id)) {
             return false;
         }
+        editedPost = postsStorage.findById(id).get();
         editedPost.setName(name);
-        editedPost.setDesc(desc);
+        editedPost.setDescription(desc);
         return true;
+    }
+
+    private void testLaunch() {
+        postsStorage.save(Post.of(1, "TestTopic", "TestDescription"));
+        messageStorage.save(new Message(1, postsStorage.findById(1).get(), "testMessage", new Date()));
     }
 }

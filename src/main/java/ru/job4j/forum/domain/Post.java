@@ -1,17 +1,27 @@
-package ru.job4j.forum.model;
+package ru.job4j.forum.domain;
 
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String desc;
+    private String description;
     private Calendar created;
-    private ArrayList<Message> messages = new ArrayList<>();
+    @OneToMany(mappedBy = "id",fetch = FetchType.EAGER)
+    private List<Message> messages = new ArrayList<>();
+
+    public Post() {
+
+    }
 
     public static Post of(int id, String name) {
         Post post = new Post();
@@ -23,11 +33,11 @@ public class Post {
         Post post = new Post();
         post.name = name;
         post.id = id;
-        post.desc = desc;
+        post.description = desc;
         return post;
     }
 
-    public ArrayList<Message> getMessages() {
+    public List<Message> getMessages() {
         return messages;
     }
 
@@ -51,12 +61,12 @@ public class Post {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Calendar getCreated() {
@@ -79,6 +89,6 @@ public class Post {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, created);
+        return Objects.hash(id, name, description, created);
     }
 }

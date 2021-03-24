@@ -17,7 +17,7 @@ public class IndexControl {
         this.conversationService = conversationService;
     }
 
-    @GetMapping({"/", "/index"})
+    @GetMapping({ "/index"})
     public String index(Model model) {
         model.addAttribute("posts", conversationService.getAllPosts());
         model.addAttribute("users", userService.getUserList());

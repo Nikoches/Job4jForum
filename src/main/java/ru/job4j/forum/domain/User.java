@@ -1,7 +1,13 @@
-package ru.job4j.forum.model;
+package ru.job4j.forum.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users_forum")
 public class User {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String username;
     private String surname;
 
