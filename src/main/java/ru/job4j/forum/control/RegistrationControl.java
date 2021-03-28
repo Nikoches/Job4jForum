@@ -24,9 +24,9 @@ public class RegistrationControl {
     }
 
     @PostMapping("/rg")
-    public RedirectView registrationPost(@RequestParam(value = "username") String username, @RequestParam(value = "surname") String surname) {
-        userService.addUser(
-                new User(username, surname));
+    public RedirectView registrationPost(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
+        userService.saveUser(
+                new User(username, password));
         return new RedirectView("/index");
     }
 }

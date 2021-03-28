@@ -6,19 +6,31 @@ import javax.persistence.*;
 @Table(name = "users_forum")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username;
-    private String surname;
+    private String password;
 
     public User() {
     }
 
-    public User(String username, String surname) {
-        this.username = username;
-        this.surname = surname;
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+    public User(Integer id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
     public String getUsername() {
         return username;
     }
@@ -27,11 +39,11 @@ public class User {
         this.username = username;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

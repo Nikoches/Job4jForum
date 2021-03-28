@@ -2,31 +2,30 @@ package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.domain.User;
+import ru.job4j.forum.storage.UsersStorage;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Service
 public class UserService {
-    private List<User> userList;
+    private final UsersStorage usersStorage;
 
-    public UserService() {
-        userList = new LinkedList<>();
+    public UserService(UsersStorage usersStorage) {
+        this.usersStorage = usersStorage;
     }
 
     public List<User> getUserList() {
-        return userList;
+        LinkedList<User> list = new LinkedList<>();
+        usersStorage.findAll().forEach(list::add);
+        return list;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
-
-    public void addUser(User user) {
-        this.userList.add(user);
+    public void saveUser(User user) {
+        usersStorage.save(user);
     }
 
     public void removeUser(User user) {
-        this.userList.remove(user);
+     usersStorage.delete(user);
     }
 }

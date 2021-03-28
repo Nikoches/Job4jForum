@@ -55,7 +55,7 @@
         <tbody>
         <c:forEach items="${users}" var="user">
             <tr>
-                <td><c:out value="${user.username}"/> <td><c:out value="${user.surname}"/></td>
+                <td><c:out value="${user.username}"/> <td><c:out value="${user.password}"/></td>
             </tr>
         </c:forEach>
         </tbody>
