@@ -26,8 +26,12 @@ public class ConversationControl {
 
     @GetMapping("/topic")
     public String getpost(@RequestParam(required = false, value = "topic", defaultValue = "Empty topic") int topic, Model model) {
-        model.addAttribute("messages", conversationService.getMessagesByPost(topic));
-        model.addAttribute("topic", topic);
+        if (conversationService.getMessagesByPost(topic) == null) {
+            return "error";
+        }else {
+            model.addAttribute("messages", conversationService.getMessagesByPost(topic));
+            model.addAttribute("topic", topic);
+        }
         return "topic";
     }
 

@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Редактирование</title>
-    <a href='<c:url value="/index"/>'><c:url value="Вернутся на главную"/></a>
 </head>
 <body>
 <div class="alert alert-warning" id="alert" style="${alert};">
