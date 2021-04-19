@@ -17,30 +17,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
-public class AllControllersGetMethodsTest {
-
+public class IndexControlTest {
     @Autowired
     private MockMvc mockMvc;
-
     @Test
     public void testIndexGetDefault() throws Exception {
         this.mockMvc.perform(get("/index"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
-    }
-    @Test
-    public void testRegistrationGetDefault() throws Exception {
-        this.mockMvc.perform(get("/rg"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("registration"));
-    }
-    @Test
-    public void testTopicGetDefault() throws Exception {
-        this.mockMvc.perform(get("/topic?topic=1"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("topic"));
     }
 }
