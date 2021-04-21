@@ -2,11 +2,6 @@
 language: java
 jdk:
   openjdk14
-before_script:
-  - psql -c 'create database forum;' -U postgres
-  - psql -f '/db/schema.sql -d travis_ci_test;'
-services:
-  - postgresql
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
 
