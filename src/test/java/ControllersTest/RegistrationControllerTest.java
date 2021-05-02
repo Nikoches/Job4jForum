@@ -9,6 +9,9 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
+import ru.job4j.forum.storage.MessageStorage;
+import ru.job4j.forum.storage.PostsStorage;
+import ru.job4j.forum.storage.UsersStorage;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -17,10 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 public class RegistrationControllerTest {
-
     @Autowired
     private MockMvc mockMvc;
     @Test
@@ -29,5 +30,7 @@ public class RegistrationControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("registration"));
+
     }
+
 }
