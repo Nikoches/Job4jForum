@@ -30,6 +30,7 @@ public class RegistrationControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("registration"));
+        int x = 1000;
 
     }
 
