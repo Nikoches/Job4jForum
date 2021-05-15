@@ -53,4 +53,5 @@ public class ConversationService {
         postsStorage.save(Post.of(1, "TestTopic", "TestDescription"));
         messageStorage.save(new Message(1, postsStorage.findById(1).get(), "testMessage", new Date()));
     }
+
 }

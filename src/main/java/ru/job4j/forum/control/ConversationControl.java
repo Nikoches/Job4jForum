@@ -65,4 +65,8 @@ public class ConversationControl {
         });
         return new RedirectView("/index");
     }
+    @PostMapping
+    public String createMessage(){
+        
+    }
 }
