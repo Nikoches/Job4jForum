@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Регистрация</title>
-    <jsp:include page="parts/general.jsp" />
 </head>
 <body>
 <form action = "${pageContext.request.contextPath}/rg" method = "POST">

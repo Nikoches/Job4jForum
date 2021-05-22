@@ -37,7 +37,7 @@
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td><c:out value="${post.name}"/></td>
-                    <td>  <a href='<c:url value="/topic/${post.id}"/>'><c:url value="Перейти в пост" /></a></td>
+                    <td>  <a href='<c:url value="/post/${post.id}"/>'><c:url value="Перейти в пост" /></a></td>
                     <td><c:out value="${post.description}"/></td>
                     <td><c:out value="${post.created}"/></td>
                     <td>  <a href='<c:url value="/edit?topic=${post.id}"/>'><c:url value="Редактировать пост" /></a></td>

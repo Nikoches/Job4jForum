@@ -1,16 +1,11 @@
 package ru.job4j.forum.control;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-import ru.job4j.forum.domain.Message;
 import ru.job4j.forum.domain.Post;
 import ru.job4j.forum.service.ConversationService;
 
@@ -19,24 +14,21 @@ import java.util.Date;
 import java.util.Optional;
 
 @Controller
-public class ConversationControl {
+@RequestMapping("/post")
+public class PostControl {
     @Autowired
     private ConversationService conversationService;
 
-    public ConversationControl() {
-    }
-
-    @GetMapping("/topic/{id}")
-    public String getpost(@PathVariable int id, Model model) {
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String add(@PathVariable int id, Model model) {
         if (conversationService.getMessagesByPost(id) == null) {
             return "error";
         } else {
             model.addAttribute("messages", conversationService.getMessagesByPost(id));
-            model.addAttribute("topic", id);
+            model.addAttribute("post", id);
         }
-        return "topic";
+        return "post";
     }
-
     @GetMapping("/edit/{id}")
     public String getEditPost(@PathVariable int id, Model model) {
         Optional<Post> optionalPost = Optional.ofNullable(conversationService.getPostById(id));
@@ -65,16 +57,6 @@ public class ConversationControl {
             calendar.setTime(date);
             editedPost.setCreated(calendar);
         });
-        return new RedirectView("/index");
-    }
-
-    @PostMapping("/createMessage")
-    public RedirectView createMessage(@RequestParam(value = "Post_id") int postId,
-                                      @RequestParam(value = "Message_body") String messageBody) {
-        Message message = new Message();
-        message.setMessage(messageBody);
-        message.setPost(conversationService.getPostById(postId));
-        conversationService.addMessage(message, postId);
         return new RedirectView("/index");
     }
 }

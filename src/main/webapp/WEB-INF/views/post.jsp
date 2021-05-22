@@ -4,15 +4,13 @@
 <jsp:include page="parts/general.jsp"/>
 <html>
 <head>
-    <title>${topic}</title>
-    <a href='<c:url value="/index"/>'><c:url value="Вернутся на главную" /></a>
+    <title>${post}</title>
 </head>
 <body>
-<a href='<c:url value="/create"/>'><c:url value="Добавить сообщение" /></a>
 <table class="table">
     <thead>
     <tr>
-        <th scope="col">${topic}</th>
+        <th scope="col">${post}</th>
     </tr>
     </thead>
     <tbody>
@@ -27,9 +25,10 @@
     </tbody>
 </table>
 
-<form action=${pageContext.request.contextPath}/createMessage">
+<form action=${pageContext.request.contextPath}/createMessage" style="width: 500px">
     <input type="text" name="Message_body" class="form-control" >
-    <input type="hidden" value=${topic} id="Post_id" name="post_id">
+    <input type="hidden" value=${post} id="Post_id" name="post_id">
+    <br>
     <button type="submit" name="button" class="btn btn-success" id="savePost">Сохранить</button>
 </form>
 </body>
