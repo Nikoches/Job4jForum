@@ -25,7 +25,7 @@
                 <label for="post_date">Дата поста:</label>
                 <input type="date" name="post_date" class="form-control" placeholder="${post.created}"
                        id="post_date"><br>
-                <input type="hidden" value="1" id="post_id" name="post_id">
+                <input type="hidden" value=${post.id} id="post_id" name="post_id">
                 <button type="submit" name="button" class="btn btn-success" id="savePost">Сохранить</button>
             </form>
         </div>

@@ -17,7 +17,7 @@ public class ConversationService {
     public ConversationService(PostsStorage postsStorage, MessageStorage messageStorage) {
         this.postsStorage = postsStorage;
         this.messageStorage = messageStorage;
-        testLaunch();
+        //testLaunch();
     }
 
     public List<Post> getAllPosts() {
@@ -28,6 +28,10 @@ public class ConversationService {
 
     public void addMessage(Message msg, int postId) {
         this.postsStorage.findById(postId).ifPresent(x -> x.getMessages().add(msg));
+    }
+
+    public void addPost(Post post) {
+        this.postsStorage.save(post);
     }
 
     public List<Message> getMessagesByPost(int postId) {

@@ -7,6 +7,7 @@ import java.util.Date;
 @Table(name = "messages")
 public class Message {
     @Id
+    @GeneratedValue
     private int id;
     @ManyToOne
     @JoinColumn(name="post")

@@ -26,5 +26,11 @@
     </c:forEach>
     </tbody>
 </table>
+
+<form action=${pageContext.request.contextPath}/createMessage">
+    <input type="text" name="Message_body" class="form-control" >
+    <input type="hidden" value=${topic} id="Post_id" name="post_id">
+    <button type="submit" name="button" class="btn btn-success" id="savePost">Сохранить</button>
+</form>
 </body>
 </html>
