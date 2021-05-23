@@ -13,7 +13,7 @@ import java.util.*;
 public class ConversationService {
     private final PostsStorage postsStorage;
     private final MessageStorage messageStorage;
-
+    private  List messages;
     public ConversationService(PostsStorage postsStorage, MessageStorage messageStorage) {
         this.postsStorage = postsStorage;
         this.messageStorage = messageStorage;
@@ -35,6 +35,7 @@ public class ConversationService {
     }
 
     public List<Message> getMessagesByPost(int postId) {
+      messages = getPostById(postId).getMessages();
         return getPostById(postId).getMessages();
     }
 

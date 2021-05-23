@@ -43,4 +43,5 @@ public class PostControlTest {
         verify(conversationService).addPost(argument.capture());
         assertThat(argument.getValue().getDescription(), is("from test"));
     }
+
 }
