@@ -1,6 +1,7 @@
 package ru.job4j.forum.domain;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users_forum")
@@ -45,5 +46,19 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return  Objects.equals(username, user.getUsername()) &&
+                Objects.equals(password, user.getPassword()) ;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(username, password);
     }
 }

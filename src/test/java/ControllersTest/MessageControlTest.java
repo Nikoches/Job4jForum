@@ -10,6 +10,7 @@ import org.springframework.test.context.event.annotation.BeforeTestMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
+import ru.job4j.forum.storage.UsersStorage;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -23,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MessageControlTest {
     @Autowired
     private MockMvc mockMvc;
-
 
     @Before
     public void setAll() throws Exception {
