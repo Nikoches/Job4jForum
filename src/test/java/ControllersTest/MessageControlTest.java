@@ -1,10 +1,12 @@
 package ControllersTest;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.event.annotation.BeforeTestMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
@@ -22,8 +24,9 @@ public class MessageControlTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    public void testMessageGetDefault() throws Exception {
+
+    @Before
+    public void setAll() throws Exception {
         this.mockMvc.perform(post("/createpost")
                 .param("Post_name", "Куплю ладу-грант. Дорого.")
                 .param("Post_id", "1")
@@ -34,6 +37,9 @@ public class MessageControlTest {
                 .param("post_id", "1")
                 .param("message_body", "test_body"));
 
+    }
+    @Test
+    public void testMessageGetDefault() throws Exception {
         this.mockMvc.perform(get("/post/1"))
                 .andDo(print())
                 .andExpect(status().isOk())
